@@ -1,0 +1,28 @@
+body {
+  height: 100vh;
+  background: linear-gradient(
+    183deg,
+    rgba(197, 200, 210, 0.07) 0%,
+    rgba(98, 98, 105, 0.8) 100%
+  );
+}
+.breed-select {
+  color: whitesmoke;
+  background-color: rgb(77, 77, 77);
+  height: 24px;
+  scrollbar-width: none;
+}
+.breed-select::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.cat-info {
+  display: flex;
+  gap: 20px;
+}
+.error {
+  color: red;
+}
+.is-hidden {
+  display: none;
+}
