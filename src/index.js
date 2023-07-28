@@ -1,7 +1,8 @@
 import { fetchBreeds } from './cat-api';
 import { fetchCatByBreed } from './cat-api';
-import refs from './refs';
+import getrRefs from './refs';
 
+const refs = getrRefs();
 fetchBreeds()
   .then(cats => {
     refs.selectBreedEl.innerHTML = createMarkup(cats);

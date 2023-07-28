@@ -1,4 +1,4 @@
-import refs from './refs';
+import getrRefs from './refs';
 
 const API_KEY =
   'live_1649jraXXFJZ0EuCmTKzj7icNC9VGyoX53IwfWwbmARWyiy1MmjGJcOuaMofRudb';
@@ -11,7 +11,7 @@ const options = {
     'x-api-key': API_KEY,
   },
 };
-
+const refs = getrRefs();
 refs.error.classList.add('is-hidden');
 refs.loader.classList.add('is-hidden');
 
