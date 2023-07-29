@@ -3,17 +3,21 @@ import { fetchCatByBreed } from './cat-api';
 import getrRefs from './refs';
 
 const refs = getrRefs();
+const { selectBreedEl, loaderEl, errorEl, catInfoEl } = refs;
+
 fetchBreeds()
   .then(cats => {
-    refs.selectBreedEl.innerHTML = createMarkup(cats);
-    refs.selectBreedEl.addEventListener('change', handleChooseEl);
+    selectBreedEl.innerHTML = createMarkup(cats);
+    selectBreedEl.addEventListener('change', handleChooseEl);
+    loaderEl.classList.add('is-hidden');
+    selectBreedEl.classList.remove('is-hidden');
   })
-  .catch(error => {
-    console.log(error);
-  });
+  .catch(onFetchError);
 
 function handleChooseEl() {
-  const breedId = refs.selectBreedEl.value;
+  errorEl.classList.add('is-hidden');
+  loaderEl.classList.remove('is-hidden');
+  const breedId = selectBreedEl.value;
   fetchCatByBreed(breedId)
     .then(data => {
       const imgUrl = data[0].url;
@@ -21,8 +25,10 @@ function handleChooseEl() {
       const descr = data[0].breeds[0].description;
       const tempr = data[0].breeds[0].temperament;
       createCard(imgUrl, title, descr, tempr);
+      loaderEl.classList.add('is-hidden');
+      catInfoEl.classList.remove('is-hidden');
     })
-    .catch(error => console.log(error));
+    .catch(onFetchError);
 }
 
 function createMarkup(arr) {
@@ -36,5 +42,9 @@ function createCard(url, name, descr, char) {
   <div><h1>${name}</h1>
       <p>${descr}</p>
       <p><b>Temperament:</b> ${char}</p></div>`;
-  refs.catInfoEl.innerHTML = catInf;
+  catInfoEl.innerHTML = catInf;
+}
+function onFetchError() {
+  loaderEl.classList.add('is-hidden');
+  errorEl.classList.remove('is-hidden');
 }
