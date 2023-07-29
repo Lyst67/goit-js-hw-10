@@ -13,6 +13,7 @@ body {
     color: whitesmoke;
     background-color: rgb(77, 77, 77);
     height: 24px;
+    margin-bottom: 10px;
     scrollbar-width: none;
 }
 
@@ -25,8 +26,12 @@ body {
     display: flex;
     gap: 20px;
 }
-
+.loader {
+margin-top: 0;
+font-weight: 500;
+}
 .error {
+    margin-top: 0;
     color: red;
 }
 
