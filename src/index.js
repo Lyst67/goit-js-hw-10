@@ -45,6 +45,7 @@ function createCard(url, name, descr, char) {
   catInfoEl.innerHTML = catInf;
 }
 function onFetchError() {
+  catInfoEl.classList.add('is-hidden');
   loaderEl.classList.add('is-hidden');
   errorEl.classList.remove('is-hidden');
 }
